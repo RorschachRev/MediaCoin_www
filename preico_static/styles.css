@@ -1,0 +1,231 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  top: 0px;
+  height: 58px;
+}
+
+header .logo {
+  flex: 1;
+}
+
+header .logo img {
+  width: 160px
+}
+
+header .links {
+  list-style: none;
+  display: inline-flex;
+  flex: 1;
+}
+
+header .links a {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 18px;
+  flex: 1;
+  max-width: 100px;
+}
+
+.main {
+  background-color: #eee;
+  margin-top: 79px;
+}
+
+.main .hero {
+  /*margin-top: 50px;*/
+  height: calc(100vh - 75px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .hero .cover {
+  width: 100%;
+}
+.main .hero h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.main .hero h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.main .hero .logo {
+  width: 100%;
+  text-align: center;
+}
+.main .hero .logo img {
+  width: 50%;
+}
+.main .hero .description {
+  text-align: center;
+  line-height: 1.5em;
+  margin-top: 30px;
+  width: 100%;
+}
+.main .hero p {
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+.main .hero ul {
+  list-style: none;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 100px;
+}
+.main .hero ul li {
+  display: inline-table;
+}
+.main .hero ul li button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+.main .hero ul li button:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.main .section {
+  background-color: #ddd;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.main .section .row {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.main .budget {
+  background-color: #bbb;
+}
+.main .budget h2 {
+  font-size: 28px;
+  text-align: center;
+}
+.main .budget .row .pie-chart {
+  flex: 1;
+  text-align: right;
+  margin-right: 20px;
+}
+.main .budget .row .text {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.main .features {
+  background-color: #eee;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.main .features h2 {
+  font-size: 28px;
+  text-align: center;
+}
+.main .features .feature {
+  flex: 1;
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.main .features .feature .left {
+  flex: 1;
+  text-align: right;
+  margin-right: 20px;
+}
+.main .features .feature .right {
+  flex: 1;
+  text-align: left;
+  margin-right: 20px;
+}
+
+.main .quote {
+  background-color: #ddd;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  display: flex;
+  vertical-align: center;
+  justify-content: center;
+}
+.main .quote p {
+  line-height: 1.25em;
+}
+
+.main .timer {
+  background-color: green;
+}
+.main .timer h2 {
+  font-size: 28px;
+  text-align: center;
+}
+.main .timer p {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.main .team {
+  background-color: yellow;
+}
+.main .team h2 {
+  font-size: 28px;
+  text-align: center;
+}
+.main .team .members {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+}
+.main .team .members ul {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.main .team .members ul li {
+  flex: 1;
+  margin: 10px;
+  text-align: center;
+}
+.main .team .members ul li img {
+  border-radius: 30px;
+}
+.main .team .members ul li p {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+footer {
+  background-color: #eee;
+  padding: 20px;
+  text-align: center;
+}
+footer .links {
+
+}
+footer .logo {
+  flex: 1;
+}
+footer .logo img {
+  width: 160px
+}
