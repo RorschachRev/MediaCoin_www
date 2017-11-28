@@ -194,6 +194,14 @@ header .links a:hover {
   margin-bottom: 30px;
   text-align: center;
 }
+
+h3 {
+  line-height: 1.25em;
+  font-size: 120%;
+  text-align: center;
+  font-weight: bold;
+}
+
 .main .features .feature {
   flex: 1;
   display: flex;
