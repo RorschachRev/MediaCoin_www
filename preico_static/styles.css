@@ -1,13 +1,12 @@
 *:focus {
   outline: none !important;
 }
-
 body {
   font-family: "Lato", Helvetica, Arial, sans-serif;
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #fff;  
 }
 
 header {
@@ -171,16 +170,23 @@ header .links a:hover {
   flex: 1;
   text-align: right;
   margin-right: 20px;
+
+  margin-left: 20px;
 }
 .main .budget .row .text {
   flex: 1;
   margin-left: 20px;
+
+  margin-right: 20px;
 }
 
 .main .features {
   background-color: #fff;
   padding-top: 20px;
   padding-bottom: 50px;
+
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .main .features h2 {
   font-size: 32px;
