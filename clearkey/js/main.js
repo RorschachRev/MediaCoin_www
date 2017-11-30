@@ -20,15 +20,6 @@ var keySystems = {
   primetime: ['com.adobe.primetime', 'com.adobe.access'],
   fairplay: ['com.apple.fairplay']
 };
-var keySystemsCount = (function () {
-  var count = 0;
-  for (keysys in keySystems) {
-    if (keySystems.hasOwnProperty(keysys)) {
-      count += keySystems[keysys].length;
-    }
-  }
-  return count;
-})();
 
 var testVideoElement = document.createElement('video');
 var supportedSystems = [];
