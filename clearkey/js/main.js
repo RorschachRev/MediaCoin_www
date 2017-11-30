@@ -12,6 +12,93 @@ limitations under the License.
 */
 
 'use strict';
+// EME Check
+var keySystems = {
+  widevine: ['com.widevine.alpha'],
+  playready: ['com.microsoft.playready', 'com.youtube.playready'],
+  clearkey: ['webkit-org.w3.clearkey', 'org.w3.clearkey'],
+  primetime: ['com.adobe.primetime', 'com.adobe.access'],
+  fairplay: ['com.apple.fairplay']
+};
+var keySystemsCount = (function () {
+  var count = 0;
+  for (keysys in keySystems) {
+    if (keySystems.hasOwnProperty(keysys)) {
+      count += keySystems[keysys].length;
+    }
+  }
+  return count;
+})();
+
+var testVideoElement = document.createElement('video');
+var supportedSystems = [];
+var unsupportedSystems = [];
+
+var supportsEncryptedMediaExtension = function () {
+  if (!testVideoElement.mediaKeys) {
+    if (window.navigator.requestMediaKeySystemAccess) {
+      if (typeof window.navigator.requestMediaKeySystemAccess === 'function') {
+        console.log('found default EME');
+        hasEME = true;
+        var isKeySystemSupported = function (keySystem) {
+          var config = [{initDataTypes: ['cenc']}];
+          if (window.navigator.requestMediaKeySystemAccess) {
+            window.navigator.requestMediaKeySystemAccess(keySystem, config).then(function (keySystemAccess) {
+              supportedSystems.push(keySystem);
+            }).catch(function () {
+              unsupportedSystems.push(keySystem);
+            });
+          }
+        };
+        var keysys, dummy, i;
+        for (keysys in keySystems) {
+          if (keySystems.hasOwnProperty(keysys)) {
+            for (dummy in keySystems[keysys]) {
+              isKeySystemSupported(keySystems[keysys][dummy]);
+            }
+          }
+        }
+      }
+    } else if (window.MSMediaKeys) {
+      if (typeof window.MSMediaKeys === 'function') {
+        console.log('found MS-EME');
+        hasEME = true;
+        var keysys, dummy, i;
+        for (keysys in keySystems) {
+          if (keySystems.hasOwnProperty(keysys)) {
+            for (dummy in keySystems[keysys]) {
+              if (MSMediaKeys.isTypeSupported(keySystems[keysys][dummy])) {
+                supportedSystems.push(keySystems[keysys][dummy]);
+              } else {
+                unsupportedSystems.push(keySystems[keysys][dummy]);
+              }
+            }
+          }
+        }
+      }
+    } else if (testVideoElement.webkitGenerateKeyRequest) {
+      if (typeof testVideoElement.webkitGenerateKeyRequest === 'function') {
+        console.log('found WebKit EME');
+        hasEME = true;
+        var keysys, dummy, i;
+        for (keysys in keySystems) {
+          if (keySystems.hasOwnProperty(keysys)) {
+            for (dummy in keySystems[keysys]) {
+              if (testVideoElement.canPlayType('video/mp4', keySystems[keysys][dummy])) {
+                supportedSystems.push(keySystems[keysys][dummy]);
+              } else {
+                unsupportedSystems.push(keySystems[keysys][dummy]);
+              }
+            }
+          }
+        }
+      }
+    } else {
+      console.log('no supported EME implementation found');
+      hasEME = false;
+    }
+  }
+}
 
 // Define a key: hardcoded in this example
 // This corresponds to the key used for encryption
@@ -30,7 +117,7 @@ var config = [{
 var video = document.querySelector('video');
 video.addEventListener('encrypted', handleEncrypted, false);
 
-navigator.requestMediaKeySystemAccess('org.w3.clearkey', config).then(
+window.navigator.requestMediaKeySystemAccess('org.w3.clearkey', config).then(
   function(keySystemAccess) {
     return keySystemAccess.createMediaKeys();
   }
